@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     emptyOutDir: true,
-    assetsInlineLimit: 10000000,
+    assetsInlineLimit: 0,
     rollupOptions: {
       output: {
         entryFileNames: 'script.js',

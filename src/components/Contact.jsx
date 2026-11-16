@@ -1,4 +1,7 @@
-import Galaxy from './effects/Galaxy';
+import { lazy, Suspense } from 'react';
+import useNearViewport from '../hooks/useNearViewport';
+
+const Galaxy = lazy(() => import('./effects/Galaxy'));
 
 const links = [
   { label: 'GitHub', href: 'https://github.com/Erevanox', icon: 'GH' },
@@ -7,23 +10,29 @@ const links = [
 ];
 
 export default function Contact() {
+  const { ref: sectionRef, shouldLoad } = useNearViewport();
+
   return (
-    <section id="contact" className="relative overflow-hidden py-24">
+    <section id="contact" ref={sectionRef} className="relative overflow-hidden py-24">
       <div className="absolute inset-0 opacity-90">
-        <Galaxy
-          starColors={['#ffffff', '#d4d4d4', '#a3a3a3', '#737373']}
-          saturation={0}
-          glowIntensity={0.8}
-          density={1.6}
-          starSpeed={0.45}
-          mouseInteraction={true}
-          mouseRepulsion={true}
-          repulsionStrength={2}
-          clickWarp={true}
-          intro={true}
-          rotationSpeed={0.12}
-          backgroundColor="#050505"
-        />
+        {shouldLoad && (
+          <Suspense fallback={null}>
+            <Galaxy
+              starColors={['#ffffff', '#d4d4d4', '#a3a3a3', '#737373']}
+              saturation={0}
+              glowIntensity={0.8}
+              density={1.6}
+              starSpeed={0.45}
+              mouseInteraction={true}
+              mouseRepulsion={true}
+              repulsionStrength={2}
+              clickWarp={true}
+              intro={true}
+              rotationSpeed={0.12}
+              backgroundColor="#050505"
+            />
+          </Suspense>
+        )}
       </div>
 
       <div className="noise-overlay" aria-hidden="true" />

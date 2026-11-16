@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import GlareHover from './effects/GlareHover';
-import hackzen from '../../Assets/Hackzen 2026.png';
-import nasa from '../../Assets/NASA SPACE APP.png';
-import githubAdvanced from '../../Assets/Github Advanced.png';
-import github from '../../Assets/Github.png';
-import be10x from '../../Assets/Certificate_page-0001.jpg';
-import webVision from '../../Assets/Web Vision.png';
+import hackzen from '../../Assets/optimized/hackzen-2026.webp';
+import nasa from '../../Assets/optimized/nasa-space-app.webp';
+import githubAdvanced from '../../Assets/optimized/github-advanced.webp';
+import github from '../../Assets/optimized/github.webp';
+import be10x from '../../Assets/optimized/certificate-page-0001.webp';
+import webVision from '../../Assets/optimized/web-vision.webp';
 
 const certificates = [
   { title: 'Hackathon Club Certificate of Excellence', label: '1st Place', image: hackzen },

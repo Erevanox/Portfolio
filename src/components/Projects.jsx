@@ -1,4 +1,7 @@
-import Lightfall from './effects/Lightfall';
+import { lazy, Suspense } from 'react';
+import useNearViewport from '../hooks/useNearViewport';
+
+const Lightfall = lazy(() => import('./effects/Lightfall'));
 
 const projects = [
   {
@@ -18,22 +21,28 @@ const projects = [
 ];
 
 export default function Projects() {
+  const { ref: sectionRef, shouldLoad } = useNearViewport();
+
   return (
-    <section id="projects" className="relative overflow-hidden py-24">
+    <section id="projects" ref={sectionRef} className="relative overflow-hidden py-24">
       <div className="absolute inset-0 opacity-80">
-        <Lightfall
-          colors={['#f5f5f5', '#a3a3a3', '#737373']}
-          backgroundColor="#050505"
-          opacity={0.42}
-          speed={0.32}
-          glow={0.65}
-          density={0.55}
-          twinkle={0.25}
-          mouseInteraction={true}
-          mouseStrength={0.65}
-          holdToWarp={true}
-          intro={true}
-        />
+        {shouldLoad && (
+          <Suspense fallback={null}>
+            <Lightfall
+              colors={['#f5f5f5', '#a3a3a3', '#737373']}
+              backgroundColor="#050505"
+              opacity={0.42}
+              speed={0.32}
+              glow={0.65}
+              density={0.55}
+              twinkle={0.25}
+              mouseInteraction={true}
+              mouseStrength={0.65}
+              holdToWarp={true}
+              intro={true}
+            />
+          </Suspense>
+        )}
       </div>
 
       <div className="noise-overlay" aria-hidden="true" />

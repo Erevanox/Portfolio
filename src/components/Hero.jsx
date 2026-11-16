@@ -1,24 +1,28 @@
-import PatternWaves from './effects/PatternWaves';
-import profileImage from '../../Assets/Professional.png';
+import { lazy, Suspense } from 'react';
+import profileImage from '../../Assets/optimized/professional.webp';
+
+const PatternWaves = lazy(() => import('./effects/PatternWaves'));
 
 export default function Hero() {
   return (
     <section id="home" className="relative overflow-hidden bg-[#050505]">
       <div className="absolute inset-0">
-        <PatternWaves
-          preset="silk"
-          color="#f8fafc"
-          backgroundColor="#050505"
-          opacity={0.3}
-          fade="edges"
-          fadeSize={220}
-          interactive={true}
-          cursorSize={56}
-          cursorStrength={0.8}
-          intro={true}
-          paused={false}
-          className="h-full w-full"
-        />
+        <Suspense fallback={null}>
+          <PatternWaves
+            preset="silk"
+            color="#f8fafc"
+            backgroundColor="#050505"
+            opacity={0.3}
+            fade="edges"
+            fadeSize={220}
+            interactive={true}
+            cursorSize={56}
+            cursorStrength={0.8}
+            intro={true}
+            paused={false}
+            className="h-full w-full"
+          />
+        </Suspense>
       </div>
       <div className="noise-overlay" aria-hidden="true" />
 
