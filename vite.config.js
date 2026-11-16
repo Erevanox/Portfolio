@@ -7,8 +7,8 @@ export default defineConfig({
   plugins: [react()],
   publicDir: false,
   build: {
-    outDir: '..',
-    emptyOutDir: false,
+    outDir: '../dist',
+    emptyOutDir: true,
     assetsInlineLimit: 10000000,
     rollupOptions: {
       output: {
