@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   root: 'src',
-  base: '/Portfolio/', // Must have leading and trailing slashes, matching exact repo capitalization
+  base: '/Portfolio/', // Matches your exact repository name
   plugins: [react()],
   publicDir: false,
   build: {
